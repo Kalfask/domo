@@ -1,0 +1,11 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+config.yaml
+enrolled/*.pkl
+.idea/
+.vscode/
+*.egg-info/
+dist/
+build/

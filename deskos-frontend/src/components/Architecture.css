@@ -1,0 +1,109 @@
+.arch__flow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow-x: auto;
+  padding: 24px 0;
+}
+.arch__node {
+  flex-shrink: 0;
+  background: #fff;
+  border: 2px solid #e5e5e5;
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  text-align: center;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  min-width: 160px;
+}
+.arch__node:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 30px rgba(245, 158, 11, .1);
+}
+.arch__node--entry { border-color: var(--accent); }
+.arch__node--actuator { border-color: #22c55e; }
+.arch__node--db { border-color: #3b82f6; }
+
+.arch__node-label {
+  display: block;
+  font-weight: 700;
+  font-size: .95rem;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+.arch__node-sub {
+  display: block;
+  font-size: .75rem;
+  color: var(--text-mid);
+}
+.arch__node-children {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+}
+.arch__node-children span {
+  font-size: .75rem;
+  font-weight: 500;
+  color: var(--accent-dim);
+  background: var(--accent-glow);
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.arch__arrow {
+  width: 48px;
+  height: 2px;
+  background: #d4d4d4;
+  flex-shrink: 0;
+  position: relative;
+}
+.arch__arrow::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: -4px;
+  border: 5px solid transparent;
+  border-left-color: #d4d4d4;
+}
+
+.arch__storage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 200px;
+  margin-top: -8px;
+}
+.arch__arrow--down {
+  width: 2px;
+  height: 40px;
+  background: #d4d4d4;
+  position: relative;
+}
+.arch__arrow--down::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: -4px;
+  border: 5px solid transparent;
+  border-top-color: #d4d4d4;
+}
+
+@media (max-width: 768px) {
+  .arch__flow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .arch__arrow {
+    width: 2px;
+    height: 32px;
+    align-self: center;
+  }
+  .arch__arrow::after {
+    right: auto; top: auto;
+    bottom: -1px; left: -4px;
+    border: 5px solid transparent;
+    border-top-color: #d4d4d4;
+    border-left-color: transparent;
+  }
+  .arch__storage { padding-left: 0; }
+}

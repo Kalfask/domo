@@ -1,0 +1,34 @@
+# === Dependencies ===
+node_modules/
+venv/
+.venv/
+
+# === Build output ===
+target/
+dist/
+build/
+*.class
+*.jar
+
+# === Python ===
+__pycache__/
+*.pyc
+*.pyo
+
+# === Biometric data — do NOT commit face embeddings ===
+*.pkl
+
+# === IDE / OS ===
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# === Environment / secrets ===
+.env
+.env.*
+*.log
+
+# === Claude Code session data ===
+.claude/

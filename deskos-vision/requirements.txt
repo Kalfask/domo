@@ -1,0 +1,6 @@
+opencv-python>=4.9,<5.0
+insightface>=0.7.3,<0.8
+onnxruntime>=1.17,<2.0
+numpy>=1.26,<2.0
+PyYAML>=6.0,<7.0
+requests>=2.31,<3.0

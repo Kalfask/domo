@@ -1,0 +1,28 @@
+.toggle {
+  width: 40px;
+  height: 24px;
+  border-radius: 12px;
+  background: var(--toggle-off);
+  border: 1px solid var(--border);
+  padding: 2px;
+  transition: background .2s, border-color .2s, box-shadow .2s;
+  flex-shrink: 0;
+}
+.toggle.on {
+  background: rgba(0, 212, 255, .2);
+  border-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.toggle-knob {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--text-secondary);
+  transition: transform .2s, background .2s, box-shadow .2s;
+}
+.toggle.on .toggle-knob {
+  transform: translateX(16px);
+  background: var(--accent);
+  box-shadow: 0 0 8px rgba(0, 212, 255, .5);
+}

@@ -1,0 +1,21 @@
+.app {
+  min-height: 100vh;
+  position: relative;
+}
+
+.app::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 180, 255, .02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 180, 255, .02) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.app-main {
+  position: relative;
+  z-index: 1;
+}

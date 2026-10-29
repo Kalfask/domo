@@ -1,0 +1,32 @@
+# DeskOS Vision Worker Configuration
+
+camera:
+  type: webcam          # webcam | picamera (future)
+  index: 0              # webcam device index (0 = default)
+  width: 640
+  height: 480
+
+detection:
+  det_size: [640, 640]  # detector input resolution — smaller = faster, less accurate
+  providers:
+    - CPUExecutionProvider
+
+recognition:
+  threshold: 0.5        # cosine similarity threshold for a positive match
+  enrolled_dir: enrolled
+
+state_machine:
+  enter_frames: 3       # consecutive detections before firing "arrived"
+  leave_frames: 10      # consecutive misses before firing "left"
+
+hub:
+  url: http://localhost:8080
+  endpoint: /events/vision
+  timeout: 2            # seconds
+
+ui:
+  show_preview: true    # show the live camera window
+  quit_key: q
+
+logging:
+  level: INFO           # DEBUG | INFO | WARNING | ERROR

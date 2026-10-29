@@ -1,0 +1,124 @@
+.events-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.event-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: background .15s;
+  animation: fade-in .25s ease;
+}
+.event-row:hover {
+  background: var(--surface-hover);
+}
+
+.event-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.event-dot--arrived {
+  background: var(--green);
+  box-shadow: 0 0 8px rgba(34, 197, 94, .4);
+}
+.event-dot--departed {
+  background: var(--amber);
+  box-shadow: 0 0 8px var(--amber-dim);
+}
+
+.event-body {
+  flex: 1;
+  min-width: 0;
+}
+.event-text {
+  font-size: 13px;
+}
+.event-person {
+  font-weight: 600;
+  color: var(--accent);
+}
+.event-action {
+  color: var(--text-secondary);
+}
+
+.event-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.event-confidence {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .04em;
+  color: var(--text-secondary);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+.event-time {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-secondary);
+  letter-spacing: .03em;
+  min-width: 60px;
+  text-align: right;
+}
+
+.events-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+  text-align: center;
+}
+.events-empty-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--accent-dim);
+}
+.events-empty-text {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.events-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 16px;
+}
+.events-status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 6px rgba(34, 197, 94, .4);
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+.events-status--error {
+  color: var(--alert);
+}
+.events-status--error .events-status-dot {
+  background: var(--alert);
+  box-shadow: 0 0 6px rgba(224, 90, 90, .4);
+}

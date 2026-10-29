@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: deskos-hub
+  datasource:
+    url: jdbc:postgresql://localhost:5432/deskos
+    username: postgres
+    password: dev
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+logging:
+  level:
+    com.deskos.hub: DEBUG
+
+
+shelly:
+  timeout-sec: 5
+  devices:
+    desk-light: "shellyplugsg3-d885ac1fcf2c.local"
+    room-lights: "shellyplugsg3-089272505a90.local"

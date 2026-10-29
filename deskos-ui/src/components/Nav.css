@@ -1,0 +1,100 @@
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(16px, 4vw, 32px);
+  height: 52px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(6, 11, 18, .85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topbar-reactor {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 212, 255, .3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: glow-pulse 2.5s ease-in-out infinite;
+}
+.topbar-reactor-core {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px rgba(0, 212, 255, .5);
+}
+
+.topbar-name {
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: .03em;
+  color: var(--text);
+}
+.topbar-name-accent { color: var(--accent); }
+
+.topbar-tabs { display: flex; gap: 2px; }
+.topbar-tab {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: color .15s, background .15s;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+}
+.topbar-tab:hover { color: var(--text); background: var(--surface-hover); }
+.topbar-tab.active {
+  color: var(--accent);
+  background: var(--surface-active);
+  box-shadow: inset 0 -1px 0 var(--accent);
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.topbar-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .08em;
+  color: var(--green);
+  text-transform: uppercase;
+}
+.topbar-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 6px rgba(34, 197, 94, .5);
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+.topbar-clock {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+  letter-spacing: .05em;
+  min-width: 70px;
+  text-align: right;
+}
+
+@media (max-width: 600px) {
+  .topbar-right { display: none; }
+}

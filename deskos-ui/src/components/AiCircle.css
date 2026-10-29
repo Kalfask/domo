@@ -1,0 +1,178 @@
+.ai-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.ai-circle {
+  width: 180px;
+  height: 180px;
+  position: relative;
+}
+
+.ai-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+
+/* outer ring — slow CCW */
+.ai-ring--outer {
+  border: 1px solid rgba(0, 212, 255, .15);
+  animation: spin-ccw 12s linear infinite;
+}
+.ai-ring--outer::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  border: 1.5px solid transparent;
+  border-top-color: var(--accent);
+  border-right-color: var(--accent);
+  opacity: .6;
+}
+
+/* mid ring — CW */
+.ai-ring--mid {
+  inset: 18px;
+  border: 1px dashed rgba(0, 212, 255, .1);
+  animation: spin-cw 8s linear infinite;
+}
+.ai-ring--mid::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  border: 1.5px solid transparent;
+  border-bottom-color: var(--amber);
+  border-left-color: var(--amber);
+  opacity: .5;
+}
+
+/* inner ring — slow CCW */
+.ai-ring--inner {
+  inset: 38px;
+  border: 1px solid rgba(0, 212, 255, .08);
+  animation: spin-ccw 20s linear infinite;
+}
+.ai-ring--inner::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  border-top-color: rgba(0, 212, 255, .3);
+}
+
+/* tick marks on outer ring */
+.ai-ticks {
+  position: absolute;
+  inset: 4px;
+  animation: spin-cw 30s linear infinite;
+}
+
+/* core glow */
+.ai-core-wrap {
+  position: absolute;
+  inset: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ai-core {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 212, 255, .15) 0%, transparent 70%);
+  animation: core-breathe 3s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ai-core-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 20px rgba(0, 212, 255, .5), 0 0 60px rgba(0, 212, 255, .2);
+  animation: core-pulse 2s ease-in-out infinite;
+}
+
+/* scan line */
+.ai-scan {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  animation: spin-cw 3s linear infinite;
+  overflow: hidden;
+}
+.ai-scan::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 50%; height: 2px;
+  background: linear-gradient(90deg, rgba(0, 212, 255, .6), transparent);
+  transform-origin: left center;
+  box-shadow: 0 0 8px rgba(0, 212, 255, .3);
+}
+
+/* label under the circle */
+.ai-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent-dim);
+  text-align: center;
+}
+.ai-label-main {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* event reaction — ripple ring */
+.ai-ripple {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  opacity: 0;
+  pointer-events: none;
+}
+.ai-ripple.fire {
+  animation: ripple-out .8s ease-out;
+}
+.ai-ripple.fire--amber {
+  border-color: var(--amber);
+  animation: ripple-out .8s ease-out;
+}
+
+/* core flash on event */
+.ai-core-dot.flash {
+  animation: core-flash .6s ease-out;
+}
+
+@keyframes ripple-out {
+  0%   { transform: scale(1); opacity: .8; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+@keyframes core-flash {
+  0%   { transform: scale(1); box-shadow: 0 0 20px rgba(0,212,255,.5), 0 0 60px rgba(0,212,255,.2); }
+  30%  { transform: scale(1.6); box-shadow: 0 0 40px rgba(0,212,255,.8), 0 0 100px rgba(0,212,255,.4); }
+  100% { transform: scale(1); box-shadow: 0 0 20px rgba(0,212,255,.5), 0 0 60px rgba(0,212,255,.2); }
+}
+
+@keyframes spin-cw  { to { transform: rotate(360deg); } }
+@keyframes spin-ccw { to { transform: rotate(-360deg); } }
+
+@keyframes core-breathe {
+  0%, 100% { opacity: .6; transform: scale(.95); }
+  50%      { opacity: 1;  transform: scale(1.05); }
+}
+@keyframes core-pulse {
+  0%, 100% { opacity: .7; transform: scale(.9); }
+  50%      { opacity: 1;  transform: scale(1); }
+}
